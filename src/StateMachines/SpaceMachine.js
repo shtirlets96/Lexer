@@ -2,7 +2,7 @@ import StateMachine from './StateMachine';
 
 const spaceMachine = new StateMachine('spaces', {
   begin: (char) => {
-    if (char === ' ') {
+    if (/\s/.test(char)) {
       return { name: 'begin' };
     }
   },
