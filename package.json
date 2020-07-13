@@ -1,0 +1,14 @@
+{
+  "name": "lexer",
+  "version": "1.0.0",
+  "description": "Lexer for Pascal language",
+  "main": "index.js",
+  "repository": "https://github.com/shtirlets96/Lexer.git",
+  "author": "Phrolov Mikhail",
+  "private": false,
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
