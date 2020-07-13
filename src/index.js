@@ -16,7 +16,7 @@ function resetAllRules(machinesList) {
 
 const allRules = stateMachinesList;
 
-const string = 'haha    15.1';
+const string = 'haha    15.1 1115';
 const tokens = [];
 let charsCounter = 0;
 
