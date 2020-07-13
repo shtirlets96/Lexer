@@ -2,13 +2,21 @@
   "name": "lexer",
   "version": "1.0.0",
   "description": "Lexer for Pascal language",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/shtirlets96/Lexer.git",
   "author": "Phrolov Mikhail",
   "private": false,
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "build": "rimraf dist/ && babel ./src --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+  },
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0"
+    "eslint-plugin-import": "^2.22.0",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "babel-preset-env": "^1.7.0",
+    "rimraf": "^3.0.2"
   }
 }
