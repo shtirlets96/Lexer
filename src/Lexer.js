@@ -47,7 +47,7 @@ export default class Lexer {
 
       let hasActiveMachine = false;
       allRules.forEach((machine) => {
-        machine.inputChar(this.string[i]);
+        machine.inputChar(this.string[i], this.string[i + 1]);
         if (machine.state) {
           hasActiveMachine = true;
         }

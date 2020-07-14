@@ -9,9 +9,12 @@ const numberMachine = new StateMachine('real', {
       return { name: 'exponentialStart', notEnd: true };
     }
   },
-  integerPart: (char) => {
+  integerPart: (char, nextChar) => {
     if (/[0-9]/.test(char)) {
       return { name: 'integerPart', notEnd: true };
+    }
+    if (char + nextChar === '..') {
+      return undefined;
     }
     if (char === '.') {
       return { name: 'decimalPart', notEnd: true };

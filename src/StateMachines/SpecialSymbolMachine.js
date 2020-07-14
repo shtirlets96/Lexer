@@ -2,10 +2,10 @@ import StateMachine from './StateMachine';
 
 const specialSymbolMachine = new StateMachine('special symbol', {
   begin: (char) => {
-    if ('[]=.,():;^@'.includes(char)) {
-      return { name: 'begin' };
+    if ('[],():;^@'.includes(char)) {
+      return { name: 'end' };
     }
-    if (/[->:+*]/.test(char)) {
+    if (/[-=>:+*]/.test(char)) {
       return { name: 'pairWithEqualty' };
     }
     if (char === '<') {

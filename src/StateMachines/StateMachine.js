@@ -6,10 +6,10 @@ export default class StateMachine {
     this.name = name;
   }
 
-  inputChar(char) {
+  inputChar(char, nextChar) {
     this.prevState = this.state;
     if (this.state) {
-      this.state = this.rules[this.state.name](char);
+      this.state = this.rules[this.state.name](char, nextChar);
     }
   }
 
