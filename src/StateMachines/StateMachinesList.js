@@ -1,8 +1,19 @@
 import intMachine from './IntMachine';
 import realMachine from './RealMachine';
 import spaceMachine from './SpaceMachine';
-import wordMachine from './WordMachine';
+import identifierMachine from './IdentifierMachine';
+import specialSymbolMachine from './SpecialSymbolMachine';
+import stringMachine from './StringMachine';
+import charMachine from './CharMachine';
+import commentMachine from './CommentMachine';
 
-const stateMachinesList = [realMachine, intMachine, spaceMachine, wordMachine];
-
+const stateMachinesList = [
+  commentMachine,
+  stringMachine,
+  specialSymbolMachine,
+  realMachine,
+  intMachine,
+  spaceMachine,
+  identifierMachine,
+  charMachine];
 export default stateMachinesList;

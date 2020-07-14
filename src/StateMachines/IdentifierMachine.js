@@ -1,6 +1,6 @@
 import StateMachine from './StateMachine';
 
-const wordMachine = new StateMachine('word', {
+const identifierMachine = new StateMachine('word', {
   begin: (char) => {
     if (/[a-z]/i.test(char)) {
       return { name: 'begin' };
@@ -8,4 +8,4 @@ const wordMachine = new StateMachine('word', {
   },
 });
 
-export default wordMachine;
+export default identifierMachine;
