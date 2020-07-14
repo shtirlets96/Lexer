@@ -22,11 +22,12 @@ export default class Lexer {
     });
   }
 
-  checkUnclosed(charsCounter) {
+  checkUnclosed(charsCounter, position) {
     if ((stateMachinesList[0].state && stateMachinesList[0].state.name === 'multilineComment')
       || (stateMachinesList[1].state && stateMachinesList[1].state.name === 'string')) {
       this.tokens.push({
         token: undefined,
+        position,
         lexeme: this.string.substring(this.string.length - charsCounter + 1, this.string.length),
       });
     }
@@ -80,7 +81,7 @@ export default class Lexer {
       carretShift = false;
     }
 
-    this.checkUnclosed(charsCounter);
+    this.checkUnclosed(charsCounter, startPosition);
 
     return this.tokens;
   }
