@@ -34,9 +34,15 @@ export default class Lexer {
 
   getTokens() {
     let charsCounter = 0;
+    let startPosition = [1, 1];
+    let charOnLineNumber = 0;
+    let lineNumber = 1;
+    let carretShift = false;
 
     for (let i = 0; i <= this.string.length; i += 1) {
       charsCounter += 1;
+      charOnLineNumber += 1;
+
       let hasActiveMachine = false;
       allRules.forEach((machine) => {
         machine.inputChar(this.string[i]);
@@ -49,18 +55,29 @@ export default class Lexer {
         if (charsCounter > 1) {
           this.tokens.push({
             token: this.getActiveName(allRules),
-            lexeme: this.string.substring(i - charsCounter + 1, i),
+            lexeme: this.string.substring(i - charsCounter + 1, i);,
+            position: startPosition,
           });
           i -= 1;
+          carretShift = true;
         } else {
           this.tokens.push({
             token: undefined,
+            position: startPosition,
             lexeme: this.string.substring(i, i + 1),
           });
         }
+        charOnLineNumber -= 1;
+        startPosition = [lineNumber, charOnLineNumber];
         charsCounter = 0;
         this.resetAllRules(allRules);
       }
+
+      if (this.string[i] === ('\n') && !carretShift) {
+        lineNumber += 1;
+        charOnLineNumber = 1;
+      }
+      carretShift = false;
     }
 
     this.checkUnclosed(charsCounter);
