@@ -5,8 +5,9 @@ const allRules = stateMachinesList;
 
 export default class Lexer {
   constructor(string) {
-    this.string = string;
+    this.string = string += '\n';
     this.tokens = [];
+    this.resetAllRules(allRules);
   }
 
   getActiveName(machinesList) {
@@ -47,7 +48,8 @@ export default class Lexer {
 
       let hasActiveMachine = false;
       allRules.forEach((machine) => {
-        machine.inputChar(this.string[i], this.string[i + 1]);
+        let char = this.string[i] ? this.string[i].toLowerCase() : this.string[i]
+        machine.inputChar(char, this.string[i + 1]);
         if (machine.state) {
           hasActiveMachine = true;
         }
@@ -83,7 +85,7 @@ export default class Lexer {
     }
 
     this.checkUnclosed(charsCounter, startPosition);
-    updateTokens(this.tokens);
+    this.tokens = updateTokens(this.tokens);
 
     return this.tokens;
   }

@@ -49,4 +49,6 @@ export default function updateTokens(tokens) {
     checkIdentifier(token);
     checkSpecialSymbols(token);
   });
+
+  return tokens.filter((token) => (token.type !== 'spaces'));
 }

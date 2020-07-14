@@ -5,7 +5,7 @@ const specialSymbolMachine = new StateMachine('special symbol', {
     if ('[],():;^@'.includes(char)) {
       return { name: 'end' };
     }
-    if (/[-=>:+*]/.test(char)) {
+    if (/[-=>:+*/]/.test(char)) {
       return { name: 'pairWithEqualty' };
     }
     if (char === '<') {
