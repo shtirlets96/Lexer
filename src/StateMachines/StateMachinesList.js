@@ -4,7 +4,6 @@ import spaceMachine from './SpaceMachine';
 import identifierMachine from './IdentifierMachine';
 import specialSymbolMachine from './SpecialSymbolMachine';
 import stringMachine from './StringMachine';
-import charMachine from './CharMachine';
 import commentMachine from './CommentMachine';
 
 const stateMachinesList = [
@@ -15,5 +14,5 @@ const stateMachinesList = [
   intMachine,
   spaceMachine,
   identifierMachine,
-  charMachine];
+];
 export default stateMachinesList;
