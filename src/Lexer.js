@@ -1,4 +1,5 @@
 import stateMachinesList from './StateMachines/StateMachinesList';
+import updateTokens from './token';
 
 const allRules = stateMachinesList;
 
@@ -26,7 +27,7 @@ export default class Lexer {
     if ((stateMachinesList[0].state && stateMachinesList[0].state.name === 'multilineComment')
       || (stateMachinesList[1].state && stateMachinesList[1].state.name === 'string')) {
       this.tokens.push({
-        token: undefined,
+        type: undefined,
         position,
         lexeme: this.string.substring(this.string.length - charsCounter + 1, this.string.length),
       });
@@ -55,15 +56,15 @@ export default class Lexer {
       if (!hasActiveMachine) {
         if (charsCounter > 1) {
           this.tokens.push({
-            token: this.getActiveName(allRules),
-            lexeme: this.string.substring(i - charsCounter + 1, i);,
+            type: this.getActiveName(allRules),
+            lexeme: this.string.substring(i - charsCounter + 1, i),
             position: startPosition,
           });
           i -= 1;
           carretShift = true;
         } else {
           this.tokens.push({
-            token: undefined,
+            type: undefined,
             position: startPosition,
             lexeme: this.string.substring(i, i + 1),
           });
@@ -82,6 +83,7 @@ export default class Lexer {
     }
 
     this.checkUnclosed(charsCounter, startPosition);
+    updateTokens(this.tokens);
 
     return this.tokens;
   }

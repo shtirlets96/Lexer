@@ -1,8 +1,8 @@
 import StateMachine from './StateMachine';
 
-const identifierMachine = new StateMachine('word', {
+const identifierMachine = new StateMachine('identifier', {
   begin: (char) => {
-    if (/[a-z]/i.test(char)) {
+    if (/[a-z_]/i.test(char)) {
       return { name: 'begin' };
     }
   },
